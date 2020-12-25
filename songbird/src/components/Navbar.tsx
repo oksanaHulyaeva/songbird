@@ -2,7 +2,6 @@ import React from 'react'
 import { IData } from '../interfaces'
 import '../css/index.scss'
 
-
 type NavbarProps = {
   data: IData[],
 }
