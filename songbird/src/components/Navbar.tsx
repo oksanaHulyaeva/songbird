@@ -1,14 +1,14 @@
 import React from 'react'
-import { IData } from '../interfaces'
+import { IData, IState } from '../interfaces'
 import '../css/index.scss'
+import {connect} from 'react-redux';
 
 type NavbarProps = {
   data: IData[],
 }
 
-const Navbar: React.FC<NavbarProps> = (data) => {
-  const categories = data.data;
-  console.log(categories);
+const Navbar: React.FC<NavbarProps> = (props) => {
+  const categories = props.data;
   return (
     <nav>
       <ul>
@@ -26,4 +26,12 @@ const Navbar: React.FC<NavbarProps> = (data) => {
 
 }
 
-export default Navbar
+const mapStateToProps = (state:IState) => {
+  console.log(state.level.level);
+  return {
+    level: state.level.level,
+    score: state.score.score
+  }
+}
+
+export default connect(mapStateToProps, null)(Navbar)
